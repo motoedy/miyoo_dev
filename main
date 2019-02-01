@@ -1,0 +1,17 @@
+#!/bin/sh
+RUN="/mnt/miyoo.sh"
+
+export HOME=/mnt
+export SDL_NOMOUSE=1
+
+swapon /dev/mmcblk0p3
+modprobe r61520fb.ko
+
+test -e $RUN
+[ -e $RUN ]
+
+/boot/gmenu2x/daemon
+while [ 1 ]
+do
+	cd /boot/gmenu2x; ./gmenu2x
+done
